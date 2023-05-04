@@ -41,26 +41,7 @@ app.get("/", (req, res) => {
 app.get("/posts/:id", (req, res) => {
   const id = req.params.id;
   const post = postBank.find(id);
-  if (!post.id) {
-    // If the post wasn't found, set the HTTP status to 404 and send Not Found HTML
-    res.status(404);
-    const html = `
-     <!DOCTYPE html>
-     <html>
-     <head>
-       <title>Wizard News</title>
-       <link rel="stylesheet" href="/style.css" />
-     </head>
-     <body>
-       <header><img src="/logo.png"/>Wizard News</header>
-       <div class="not-found">
-         <p>404: Page Not Found</p>
-       </div>
-     </body>
-     </html>`;
-    res.send(html);
-  } else {
-    const html = `<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
   <html>
   <head>
     <title>Wizard News</title>
@@ -83,12 +64,7 @@ app.get("/posts/:id", (req, res) => {
       
   </body>
 </html>`;
-    res.send(html);
-  }
-});
-
-app.get("*", (req, res, next) => {
-  res.status(404).send("Oops, that endpoint doesn't exist!");
+  res.send(html);
 });
 
 const {PORT  = 1337} = process.env;
