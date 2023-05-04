@@ -91,9 +91,10 @@ app.get("*", (req, res, next) => {
   res.status(404).send("Oops, that endpoint doesn't exist!");
 });
 
-const PORT = 1337;
+const {PORT  = 1337} = process.env;
 
 app.listen(PORT, () => {
   console.log(`App listening in port ${PORT}`);
 });
 app.use(morgan("Dev"));
+app.use(volleyball("Dev2"))
