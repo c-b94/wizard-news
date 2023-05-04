@@ -97,4 +97,3 @@ app.listen(PORT, () => {
   console.log(`App listening in port ${PORT}`);
 });
 app.use(morgan("Dev"));
-app.use(volleyball("Dev2"))
